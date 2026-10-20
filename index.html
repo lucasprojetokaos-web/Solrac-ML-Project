@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Proposta de criação da página oficial da Solrac no Mercado Livre">
+<title>Proposta de Projeto — Solrac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+/* Layout: o mesmo sistema da proposta Ultra Fitas (DS v1.1). Coluna única com bordas de 1px, seções numeradas em sequência, monocromático com uma única inversão no encerramento. Tema claro fixo, por escolha. */
+:root{
+  --ink:#0A0A0A;--slate:#3D3D3D;--steel:#6E6E6E;--ash:#A8A8A5;
+  --fog:#CFCFCC;--line:#E3E3E0;--bone:#F4F4F2;--paper:#FFFFFF;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;
+  --s7:48px;--s8:64px;--s9:96px;--s10:128px;
+  --font:'Switzer','Inter Tight',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.2,0,0,1);--base:240ms;--slow:400ms;
+  --max:1440px;
+  color-scheme:light;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+::selection{background:var(--ink);color:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+.label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.d1{font-size:clamp(42px,7vw,84px);font-weight:500;line-height:.96;letter-spacing:-.045em;text-wrap:balance}
+.d2{font-size:clamp(32px,4.4vw,56px);font-weight:500;line-height:1.02;letter-spacing:-.04em;text-wrap:balance}
+.t1{font-size:clamp(26px,3vw,36px);font-weight:500;line-height:1.12;letter-spacing:-.03em;text-wrap:balance}
+.t2{font-size:24px;font-weight:500;line-height:1.22;letter-spacing:-.025em;text-wrap:balance}
+.h1{font-size:17px;font-weight:600;line-height:1.35;letter-spacing:-.018em}
+.bl{font-size:18px;line-height:1.55;letter-spacing:-.011em}
+.bd{font-size:15px;line-height:1.65}
+.sm{font-size:13.5px;line-height:1.55;color:var(--steel)}
+.cap{font-size:12px;line-height:1.45;letter-spacing:.015em;color:var(--ash)}
+.muted{color:var(--steel)}
+p + p{margin-top:var(--s4)}
+
+.page{max-width:var(--max);margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+section{padding-block:clamp(56px,8vw,var(--s9));padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line);position:relative}
+@media(min-width:721px){section{padding-left:clamp(20px,5vw,var(--s8));padding-right:clamp(20px,5vw,var(--s8))}}
+.sec-head{display:flex;gap:var(--s5);align-items:baseline;margin-bottom:var(--s7)}
+.sec-num{font-size:11px;font-weight:600;letter-spacing:.14em;padding-top:6px;min-width:20px}
+.sec-title{max-width:640px;min-width:0}
+.sec-title p{margin-top:var(--s4);color:var(--steel);font-size:15px;line-height:1.65;max-width:58ch}
+
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.cell{background:var(--paper);padding:var(--s6);min-width:0}
+.cell.bone{background:var(--bone)}
+.cell > .label{color:var(--steel);margin-bottom:var(--s5);display:block}
+
+.split{display:grid;grid-template-columns:1fr 2fr;gap:var(--s8);align-items:start}
+.split > *{min-width:0}
+.split .aside{position:sticky;top:var(--s6)}
+.split .bd{max-width:68ch}
+.concept{margin-top:var(--s7);background:var(--bone);border-top:1px solid var(--ink);padding:var(--s7)}
+.concept .t2{max-width:36ch}
+
+/* Capa */
+.cover{padding-top:clamp(64px,10vw,var(--s10));overflow:hidden}
+.brand{display:flex;align-items:center;gap:var(--s4)}
+.cover-mark{width:48px;height:48px;color:var(--ink);flex-shrink:0}
+.cover-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.5;-webkit-mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%);mask-image:radial-gradient(120% 90% at 80% 0%,#000 0%,transparent 70%)}
+.cover-inner{position:relative}
+.cover .d1{max-width:15ch;margin:var(--s5) 0 var(--s6)}
+.cover .bl{max-width:52ch}
+.meta{display:flex;flex-wrap:wrap;gap:var(--s6) var(--s8);margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid var(--ink)}
+.meta .label{color:var(--steel)}
+.meta p{margin-top:6px;font-size:14px}
+
+/* Quem conduz */
+.person{display:grid;grid-template-columns:auto 1fr;gap:var(--s6);align-items:start;border:1px solid var(--line);background:var(--bone);padding:var(--s7) var(--s6)}
+.portrait{width:128px;height:128px;object-fit:cover;filter:grayscale(1);display:block;flex-shrink:0}
+.person .sm{margin:var(--s1) 0 var(--s5)}
+.person .bl{max-width:58ch}
+
+/* Linha do tempo */
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--ink)}
+.tl{padding:var(--s4) var(--s4) 0 0;border-right:1px solid var(--line);margin-right:var(--s4);min-width:0}
+.tl:last-child{border-right:0;margin-right:0}
+.tl .yr{font-size:28px;font-weight:500;letter-spacing:-.03em;line-height:1;margin-bottom:var(--s3)}
+.tl.now .yr::after{content:"";display:inline-block;width:8px;height:8px;background:var(--ink);margin-left:8px;vertical-align:middle}
+
+.lines{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.tag{display:inline-block;padding:6px 11px;border:1px solid var(--line);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);background:var(--paper)}
+.tag.fill{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* Dor */
+.pain{display:flex;flex-direction:column;gap:var(--s3)}
+.pain .num{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ash)}
+
+/* Arquitetura: duas contas */
+.acct{display:flex;flex-direction:column;gap:var(--s4)}
+.acct .t2{margin-bottom:0}
+.kv{display:flex;flex-direction:column}
+.kv div{display:grid;grid-template-columns:120px 1fr;gap:var(--s4);padding:var(--s3) 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.55}
+.kv div:last-child{border-bottom:1px solid var(--line)}
+.kv dt{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);padding-top:3px}
+.kv dd{color:var(--slate)}
+.link-strip{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--s4);margin-top:var(--s5);padding:var(--s4) var(--s5);border:1px dashed var(--fog)}
+.link-strip .cap{color:var(--steel)}
+.link-strip .mid{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.link-strip > :last-child{text-align:right}
+
+.smart{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:var(--s7)}
+.smart div{background:var(--paper);padding:var(--s5);min-width:0}
+.smart b{display:block;font-size:28px;font-weight:500;letter-spacing:-.03em;line-height:1;margin-bottom:var(--s3)}
+.smart .label{color:var(--steel);display:block;margin-bottom:var(--s2)}
+
+/* Fluxograma */
+.flow-wrap{overflow-x:auto}
+.flow{min-width:880px;display:flex;flex-direction:column}
+.phase{display:grid;grid-template-columns:200px 1fr;gap:var(--s6);align-items:stretch}
+.phase-id{border-top:1px solid var(--ink);padding-top:var(--s4)}
+.phase-id .label{color:var(--steel);display:block;margin-bottom:var(--s2)}
+.phase-id .h1{display:block}
+.phase-id .cap{display:block;margin-top:var(--s2)}
+.steps{display:flex;align-items:stretch;gap:0;padding-top:var(--s4);border-top:1px solid var(--line)}
+.box{flex:1;border:1px solid var(--ink);background:var(--paper);padding:var(--s4);min-width:0;display:flex;flex-direction:column;gap:6px}
+.box .code{font-size:10.5px;font-weight:600;letter-spacing:.14em;color:var(--ash)}
+.box .h1{font-size:15px}
+.box .cap{color:var(--steel)}
+.box.gate{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.box.gate .code,.box.gate .cap{color:var(--ash)}
+.box.ext{border-style:dashed;border-color:var(--steel);background:var(--bone)}
+.harrow{flex:0 0 28px;position:relative}
+.harrow::before{content:"";position:absolute;left:4px;right:6px;top:50%;height:1px;background:var(--ink)}
+.harrow::after{content:"";position:absolute;right:2px;top:calc(50% - 4px);border-left:6px solid var(--ink);border-top:4px solid transparent;border-bottom:4px solid transparent}
+.vlink{display:grid;grid-template-columns:200px 1fr;gap:var(--s6);height:40px}
+.vlink span{position:relative}
+.vlink span::before{content:"";position:absolute;left:50%;top:6px;bottom:8px;width:1px;background:var(--ink)}
+.vlink span::after{content:"";position:absolute;left:calc(50% - 4px);bottom:2px;border-top:6px solid var(--ink);border-left:4px solid transparent;border-right:4px solid transparent}
+.vlink > span:first-child::before,.vlink > span:first-child::after{display:none}
+.vlink.split2 span{display:grid;grid-template-columns:1fr 1fr}
+.vlink.split2 span::before,.vlink.split2 span::after{display:none}
+.vlink.split2 i{position:relative;display:block}
+.vlink.split2 i::before{content:"";position:absolute;left:50%;top:6px;bottom:8px;width:1px;background:var(--ink)}
+.vlink.split2 i::after{content:"";position:absolute;left:calc(50% - 4px);bottom:2px;border-top:6px solid var(--ink);border-left:4px solid transparent;border-right:4px solid transparent}
+.fronts{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);padding-top:var(--s4);border-top:1px solid var(--line)}
+.front{border:1px solid var(--line);padding:var(--s4);background:var(--bone);display:flex;flex-direction:column;gap:var(--s3)}
+.front > .label{color:var(--ink)}
+.front .box + .box{margin-top:0}
+.front .chain{display:flex;flex-direction:column}
+.front .down{height:22px;position:relative}
+.front .down::before{content:"";position:absolute;left:24px;top:3px;bottom:7px;width:1px;background:var(--ink)}
+.front .down::after{content:"";position:absolute;left:20px;bottom:1px;border-top:6px solid var(--ink);border-left:4px solid transparent;border-right:4px solid transparent}
+.legend{display:flex;flex-wrap:wrap;gap:var(--s5);margin-top:var(--s6)}
+.legend span{display:flex;align-items:center;gap:var(--s2);font-size:12.5px;color:var(--steel)}
+.legend i{width:16px;height:12px;border:1px solid var(--ink);background:var(--paper);display:inline-block}
+.legend i.g{background:var(--ink)}
+.legend i.e{border-style:dashed;border-color:var(--steel);background:var(--bone)}
+
+.note{border-top:1px solid var(--ink);padding-top:var(--s4);max-width:72ch;margin-top:var(--s7)}
+.note .label{display:block;margin-bottom:var(--s3)}
+
+/* Tabela */
+.table-wrap{overflow-x:auto}
+.table{width:100%;border-collapse:collapse}
+.table th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);padding:0 var(--s5) var(--s3) 0;border-bottom:1px solid var(--ink)}
+.table td{font-size:15px;line-height:1.65;padding:var(--s4) var(--s5) var(--s4) 0;border-bottom:1px solid var(--line);vertical-align:top}
+.table td:first-child{font-weight:600;white-space:nowrap}
+.table td:nth-child(2){white-space:nowrap}
+.table td:last-child{color:var(--steel)}
+.table tr.ms td{background:var(--bone)}
+.table tr.ms td:first-child{padding-left:var(--s3)}
+
+/* Premissas / riscos */
+.list{display:flex;flex-direction:column}
+.list li{list-style:none;font-size:14.5px;line-height:1.55;padding:var(--s3) 0;border-top:1px solid var(--line);color:var(--slate)}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list li b{color:var(--ink);font-weight:600}
+.risk{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);padding:var(--s4) 0;border-top:1px solid var(--line)}
+.risk:last-child{border-bottom:1px solid var(--line)}
+.risk > *{min-width:0}
+.risk .h1{font-size:15px;margin-bottom:var(--s1)}
+.risk .bd{font-size:14px;color:var(--steel)}
+.risk .resp{font-size:14px;color:var(--slate)}
+.risk .resp::before{content:"Resposta — ";color:var(--ash);font-weight:600}
+
+/* Investimento */
+.plan .t2{margin:var(--s5) 0 var(--s3)}
+.plan .sm{max-width:48ch;margin-bottom:var(--s5)}
+.inc{font-size:15px;padding:var(--s3) 0;border-top:1px solid var(--line)}
+.inc:last-child{border-bottom:1px solid var(--line)}
+.inc::before{content:"— ";color:var(--ash)}
+.price-cell{background:var(--ink);color:var(--paper);padding:var(--s6);display:flex;flex-direction:column;justify-content:center}
+.price-cell .label{color:var(--ash);margin-bottom:var(--s3);display:block}
+.price{font-size:clamp(32px,4.4vw,56px);font-weight:500;line-height:1.02;letter-spacing:-.04em}
+.price-cell .cap{margin-top:var(--s3);color:var(--ash)}
+.price-block + .price-block{margin-top:var(--s7);padding-top:var(--s7);border-top:1px solid var(--slate)}
+.extra .t2{margin:var(--s4) 0 var(--s3)}
+
+/* Contrato */
+.clauses{border-top:1px solid var(--ink)}
+.clause{display:grid;grid-template-columns:48px 240px 1fr;gap:var(--s5);padding:var(--s5) 0;border-bottom:1px solid var(--line);align-items:baseline}
+.clause .num{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ash)}
+.clause .bd{color:var(--slate);max-width:72ch}
+
+.step > .label{color:var(--ash);margin-bottom:var(--s5)}
+
+/* Encerramento */
+.closing{background:var(--ink);color:var(--paper);border-bottom:0}
+.closing .sec-num{color:var(--paper)}
+.closing .d2{max-width:18ch;margin-bottom:var(--s5)}
+.closing .bl{color:var(--paper);max-width:52ch;margin-bottom:var(--s7)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid var(--paper);background:var(--paper);color:var(--ink);font-family:var(--font);font-size:13px;font-weight:600;letter-spacing:.02em;text-decoration:none;transition:background var(--base) var(--ease),color var(--base) var(--ease)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.contacts{display:flex;flex-wrap:wrap;gap:var(--s6) var(--s8);margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid var(--slate)}
+.contacts .label{color:var(--ash)}
+.contacts p{margin-top:6px;font-size:14px;color:var(--paper);user-select:all}
+
+footer{padding-block:var(--s7);padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s4);background:var(--paper)}
+
+/* HUD */
+.hud{position:fixed;right:calc(var(--s5) + env(safe-area-inset-right,0px));bottom:calc(var(--s5) + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:var(--s3);background:var(--paper);border:1px solid var(--line);padding:var(--s2) var(--s3)}
+.hud .keys{display:flex;gap:var(--s1)}
+.hud kbd{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid var(--line);font-family:var(--font);font-size:11px;color:var(--steel)}
+.counter{font-size:11px;font-weight:600;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+@media (hover:none){.hud .keys{display:none}}
+
+/* Movimento: 400ms, 8px, a partir de estado visível */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{animation:rise var(--slow) var(--ease) both}
+  @keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+}
+
+@media(max-width:1024px){
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:var(--s4)}
+  .split .aside{position:static}
+  .timeline{grid-template-columns:repeat(3,1fr);row-gap:var(--s5)}
+  .tl:nth-child(3n){border-right:0;margin-right:0}
+  .smart{grid-template-columns:repeat(2,1fr)}
+  .smart div:last-child{grid-column:1/-1}
+  .clause{grid-template-columns:48px 1fr}
+  .clause .bd{grid-column:2}
+  .concept{padding:var(--s6)}
+}
+@media(max-width:720px){
+  body{font-size:15px}
+  .g2,.g4{grid-template-columns:1fr}
+  .sec-head{flex-direction:column;gap:var(--s3);margin-bottom:var(--s6)}
+  .cell{padding:var(--s5)}
+  .person{grid-template-columns:1fr;padding:var(--s6) var(--s5)}
+  .portrait{width:96px;height:96px}
+  .person .bl{font-size:16px}
+  .concept{padding:var(--s5);margin-top:var(--s6)}
+  .concept .t2,.t2{font-size:20px}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+  .timeline{grid-template-columns:1fr 1fr}
+  .tl{border-right:0;margin-right:0}
+  .kv div{grid-template-columns:1fr;gap:var(--s1)}
+  .link-strip{grid-template-columns:1fr;text-align:left}
+  .link-strip > :last-child{text-align:left}
+  .smart{grid-template-columns:1fr}
+  .risk{grid-template-columns:1fr;gap:var(--s2)}
+  /* fluxograma vira coluna */
+  .flow{min-width:0}
+  .phase,.vlink{grid-template-columns:1fr;gap:var(--s3)}
+  .vlink{height:32px}
+  .vlink > :first-child{display:none}
+  .steps{flex-direction:column}
+  .harrow{flex:0 0 22px}
+  .harrow::before{left:24px;right:auto;top:3px;bottom:7px;width:1px;height:auto}
+  .harrow::after{left:20px;right:auto;top:auto;bottom:1px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid var(--ink);border-bottom:0}
+  .fronts{grid-template-columns:1fr}
+  .vlink.split2 span{grid-template-columns:1fr}
+  .vlink.split2 i:last-child{display:none}
+  .table thead{display:none}
+  .table,.table tbody,.table tr,.table td{display:block;width:100%}
+  .table tr{border-top:1px solid var(--line);padding:var(--s4) 0}
+  .table tr:first-child{border-top:1px solid var(--ink)}
+  .table td{border:0;padding:0;white-space:normal!important}
+  .table tr.ms td{background:transparent}
+  .table tr.ms td:first-child{padding-left:0}
+  .table td:first-child{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:var(--s2)}
+  .table td:nth-child(2){font-weight:600;margin-bottom:var(--s1)}
+  .price-cell{padding:var(--s5)}
+  .clause{grid-template-columns:1fr;gap:var(--s2)}
+  .clause .bd{grid-column:auto}
+  .closing .bl{font-size:16px}
+  .contacts{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+  .btn{width:100%;justify-content:center}
+  .hud{display:none}
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 356 356"><path fill="currentColor" d="M301.69.07h-123.69v-.07H54.54C49.08,30.46,31.570,49.33.07,54.31v123.69h-.07v123.46c30.46,5.47,49.33,22.98,54.31,54.47h123.69v.07h123.46c5.47-30.46,22.98-49.33,54.47-54.31v-123.69h.07V54.54c-30.46-5.470-49.33-22.98-54.31-54.47ZM275.79,206.76c6.28,25.33,13.22,50.54,19.590,75.88,2.78,11.05-1.54,15.46-12.41,12.77-28.68-7.16-57.79-13.16-85.74-22.52-6.77-2.26-13.09-2.92-19.23-2.64v-.24c-9.96.14-19.1,3.41-28.76,5.79-25.33,6.28-50.54,13.22-75.88,19.59-11.05,2.78-15.46-1.54-12.77-12.41,7.16-28.68,13.16-57.79,22.52-85.74,2.26-6.77,2.92-13.09,2.64-19.23h.24c-.14-9.96-3.41-19.1-5.79-28.76-6.28-25.33-13.22-50.54-19.59-75.88-2.78-11.05,1.54-15.46,12.41-12.77,28.68,7.16,57.790,13.16,85.74,22.52,6.77,2.26,13.09,2.92,19.23,2.64v.24c9.96-.14,19.1-3.41,28.76-5.79,25.33-6.28,50.54-13.22,75.88-19.59,11.05-2.78,15.46,1.54,12.77,12.41-7.16,28.68-13.16,57.79-22.52,85.74-2.26,6.77-2.92,13.09-2.64,19.23h-.24c.14,9.96,3.41,19.1,5.79,28.76Z"/></symbol></svg>
+
+<div class="page">
+<main>
+
+  <!-- CAPA -->
+  <section class="cover" data-sec>
+    <div class="cover-bg"></div>
+    <div class="cover-inner">
+      <div class="brand rv"><svg class="cover-mark" aria-hidden="true"><use href="#mark"></use></svg><span class="label muted">Proposta de projeto</span></div>
+      <h1 class="d1 rv">A Solrac, oficial no Mercado Livre.</h1>
+      <p class="bl muted rv">Criação da página oficial da Solrac no Mercado Livre para proteger a marca contra anúncios indevidos, e estruturação de uma conta revendedora própria, com outro nome e CNPJ, para vender os produtos Solrac sem concorrer com a rede de revendedores.</p>
+      <div class="meta rv">
+        <div><div class="label">Cliente</div><p>Solrac Gourmet</p></div>
+        <div><div class="label">A/C</div><p>Keila Espíndola</p></div>
+        <div><div class="label">Período</div><p>26/10/2026 — 19/11/2026</p></div>
+        <div><div class="label">Responsável</div><p>Lucas Dato</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 QUEM CONDUZ -->
+  <section id="quem" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Quem conduz</h2>
+        <p class="rv">Um único ponto de contato, do primeiro documento à página no ar. Quem planeja é quem executa e quem responde.</p>
+      </div>
+    </div>
+    <div class="person rv">
+      <img class="portrait" src="data:image/jpeg;base64,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" alt="Retrato de Lucas Dato">
+      <div>
+        <div class="t1">Lucas Dato</div>
+        <div class="sm">Gestão do projeto &amp; Marketplace</div>
+        <p class="bl">Estudante de Marketing pela Fatec Sebrae, trabalhou na Canastra Ventures, onde desenvolveu projetos inovadores e marcantes para a empresa. Com um forte viés empreendedor, lidera o Projeto Kaos e é o responsável por todas as etapas deste projeto: planejamento, execução junto ao Mercado Livre e entrega final.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 HISTÓRIA E MOMENTO -->
+  <section id="historia" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Da garagem ao estande da Mara Cakes.</h2>
+        <p class="rv">Dezessete anos de crescimento, sempre pelo mesmo caminho: produto próprio, feiras do setor e uma rede de revendedores.</p>
+      </div>
+    </div>
+    <div class="timeline rv">
+      <div class="tl"><div class="yr">2009</div><p class="sm">Uma garagem residencial vira indústria. O batedor é o primeiro produto.</p></div>
+      <div class="tl"><div class="yr">2014</div><p class="sm">A garagem não comporta mais o crescimento. Primeiro galpão de verdade.</p></div>
+      <div class="tl"><div class="yr">2015</div><p class="sm">Começam as feiras e eventos, com foco em fortalecer o nome Solrac Gourmet.</p></div>
+      <div class="tl"><div class="yr">2019</div><p class="sm">Nome consolidado no mercado e mudança para um galpão maior.</p></div>
+      <div class="tl"><div class="yr">2023</div><p class="sm">Estande próprio na Mara Cakes, marcado pela ousadia nas cores e no estilo.</p></div>
+      <div class="tl now"><div class="yr">2026</div><p class="sm">Linha de bisnagas lançada e marca presente nos marketplaces só por terceiros.</p></div>
+    </div>
+
+    <div class="split rv" style="margin-top:var(--s8)">
+      <p class="sm aside">Uma fabricante consolidada no B2B, com a marca circulando nos marketplaces sem que ela mesma esteja lá.</p>
+      <div class="bd">
+        <p>A Solrac Indústria e Comércio de Produtos Plásticos fabrica e importa utensílios para confeitaria e panificação. O portfólio cobre bailarinas, batedores, boleiras, tigelas e bowls em nove cores, colheres, espátulas, espátulas decorativas, placas porcionadoras, raspadores, rolos, suportes e, mais recentemente, bisnagas para molhos, caldas e recheios.</p>
+        <p>A venda é feita por representantes, lojas e atacadistas. É desse modelo que vem a força da marca, e também o seu limite no digital: a Solrac não vende diretamente ao consumidor final, porque compete com a própria rede de revendedores oficiais.</p>
+        <p>Nos marketplaces, quem fala pela Solrac são terceiros. No Magazine Luiza, por exemplo, os produtos da marca aparecem vendidos por cerca de 25 lojas diferentes. No Mercado Livre o cenário se repete, sem nenhuma página que identifique a fabricante. Nas redes, a marca mantém Instagram, Facebook e um canal no YouTube (@solracgourmet), onde se apresenta com 15 anos de mercado.</p>
+      </div>
+    </div>
+    <div class="lines rv" aria-label="Linhas de produto">
+      <span class="tag fill">Batedores</span><span class="tag">Bailarinas</span><span class="tag">Boleiras</span><span class="tag">Tigelas e bowls</span><span class="tag">Colheres</span><span class="tag">Espátulas</span><span class="tag">Espátulas decorativas</span><span class="tag">Placas porcionadoras</span><span class="tag">Raspadores</span><span class="tag">Rolos</span><span class="tag">Suportes</span><span class="tag">Bisnagas</span>
+    </div>
+  </section>
+
+  <!-- 03 A DOR -->
+  <section id="dor" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Quem vende "Solrac" no Mercado Livre hoje.</h2>
+        <p class="rv">A marca já está no maior marketplace do país. O problema é que ela não controla o que é anunciado com o seu nome.</p>
+      </div>
+    </div>
+    <div class="grid g3 rv">
+      <div class="cell pain">
+        <span class="num">Problema 1</span>
+        <h3 class="t2">Falsos revendedores</h3>
+        <p class="bd muted">Há anunciantes que vendem produtos que não são da Solrac usando o nome da marca. O comprador recebe outro item, avalia mal e associa a experiência à Solrac.</p>
+      </div>
+      <div class="cell pain">
+        <span class="num">Problema 2</span>
+        <h3 class="t2">Disputa desleal</h3>
+        <p class="bd muted">Esses anúncios competem por preço com os revendedores oficiais, que compram da fábrica e vendem o produto original. Quem segue as regras perde para quem não segue.</p>
+      </div>
+      <div class="cell pain">
+        <span class="num">Problema 3</span>
+        <h3 class="t2">Nenhuma referência oficial</h3>
+        <p class="bd muted">Sem uma página da fabricante, o consumidor não tem onde conferir o que é Solrac de verdade, e a marca não tem ferramenta formal para pedir a remoção dos anúncios indevidos.</p>
+      </div>
+    </div>
+    <div class="concept rv">
+      <p class="t2">Proteger a marca no Mercado Livre é ocupar o lugar de dono antes que outros ocupem por ela.</p>
+    </div>
+  </section>
+
+  <!-- 04 OBJETIVO -->
+  <section id="objetivo" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Duas contas, dois papéis.</h2>
+        <p class="rv">A Solrac entra para proteger. A revendedora entra para vender. Cada uma com seu CNPJ e sua função.</p>
+      </div>
+    </div>
+    <div class="split rv" style="margin-bottom:var(--s7)">
+      <p class="sm aside">O objetivo do projeto é formalizar a entrada da Solrac no Mercado Livre sem quebrar o acordo comercial com os revendedores.</p>
+      <div class="bd">
+        <p>A primeira conta é a da própria Solrac. Ela não vende. Serve para registrar a marca dentro do Mercado Livre, identificar a fabricante com uma página oficial e dar à Solrac acesso ao Brand Protection Program, o canal do Mercado Livre para que o titular da marca denuncie anúncios que usam seu nome indevidamente.</p>
+        <p>A segunda conta pertence a uma nova marca dos sócios da Solrac, com nome e CNPJ próprios. Ela atua como revendedora autorizada dos produtos Solrac, no mesmo pé que os demais revendedores, e é o canal de venda dentro do marketplace. Pelas regras do Mercado Livre, ela vende dentro da própria Loja Oficial da Solrac, como revendedora convidada.</p>
+      </div>
+    </div>
+    <div class="grid g2 rv">
+      <div class="cell acct">
+        <span class="label" style="color:var(--steel)">Conta 1 · Proteção</span>
+        <h3 class="t2">Página oficial Solrac</h3>
+        <dl class="kv">
+          <div><dt>Titular</dt><dd>Solrac Indústria e Comércio (CNPJ atual)</dd></div>
+          <div><dt>Função</dt><dd>Identificar a fabricante e proteger a marca</dd></div>
+          <div><dt>Ferramentas</dt><dd>Minhas Marcas, Minha Página / Loja Oficial, Brand Protection Program</dd></div>
+          <div><dt>Vende?</dt><dd>Não vende diretamente. Hospeda os produtos da revendedora convidada e mantém o produto mínimo que o Mercado Livre exige</dd></div>
+        </dl>
+      </div>
+      <div class="cell bone acct">
+        <span class="label" style="color:var(--steel)">Conta 2 · Venda</span>
+        <h3 class="t2">Marca revendedora</h3>
+        <dl class="kv">
+          <div><dt>Titular</dt><dd>Nova empresa dos sócios, com outro nome e CNPJ</dd></div>
+          <div><dt>Função</dt><dd>Vender os produtos Solrac como revendedora autorizada</dd></div>
+          <div><dt>Ferramentas</dt><dd>Conta empresa, catálogo, Mercado Envios e Mercado Pago, vendendo dentro da Loja Oficial Solrac</dd></div>
+          <div><dt>Vende?</dt><dd>Sim, nas mesmas condições dos demais revendedores</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="link-strip rv">
+      <span class="cap">A Solrac identifica e protege a marca</span>
+      <span class="mid">Convite para vender na Loja Oficial →</span>
+      <span class="cap">A revendedora vende o produto original</span>
+    </div>
+
+    <div class="smart rv" aria-label="Objetivo SMART">
+      <div><span class="label">Específico</span><p class="sm">Página oficial da Solrac e conta da revendedora ativas no Mercado Livre.</p></div>
+      <div><span class="label">Mensurável</span><p class="sm">Marca registrada no ML, Brand Protection aprovado e primeiras denúncias protocoladas.</p></div>
+      <div><span class="label">Atingível</span><p class="sm">Usa só ferramentas oficiais do Mercado Livre e o registro que a Solrac já possui.</p></div>
+      <div><span class="label">Relevante</span><p class="sm">Protege a marca e os revendedores oficiais e abre um canal de venda próprio.</p></div>
+      <div><span class="label">Temporal</span><p class="sm">Páginas no ar até 19/11/2026, em 4 semanas a partir de 26/10.</p></div>
+    </div>
+  </section>
+
+  <!-- 05 FLUXOGRAMA -->
+  <section id="etapas" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Do registro à página no ar.</h2>
+        <p class="rv">Cinco fases em sequência. Depois do planejamento, o trabalho se divide em duas frentes paralelas, uma para cada conta, que se juntam na validação final.</p>
+      </div>
+    </div>
+
+    <div class="flow-wrap rv">
+      <div class="flow" role="img" aria-label="Fluxograma: Iniciação, Planejamento, Execução em duas frentes paralelas, Monitoramento e Encerramento">
+
+        <div class="phase">
+          <div class="phase-id"><span class="label">Fase 1 · Semana 1</span><span class="h1">Iniciação</span><span class="cap">Autoriza o projeto</span></div>
+          <div class="steps">
+            <div class="box"><span class="code">1.1</span><span class="h1">Reunião de imersão</span><span class="cap">Kick-off com a Solrac</span></div>
+            <div class="harrow"></div>
+            <div class="box"><span class="code">1.2</span><span class="h1">Documentação</span><span class="cap">Certificado INPI, CNPJs, logos e acessos às contas do ML</span></div>
+            <div class="harrow"></div>
+            <div class="box gate"><span class="code">Marco</span><span class="h1">TAP aprovado</span><span class="cap">Termo de Abertura assinado</span></div>
+          </div>
+        </div>
+        <div class="vlink"><span></span><span></span></div>
+
+        <div class="phase">
+          <div class="phase-id"><span class="label">Fase 2 · Semana 1</span><span class="h1">Planejamento</span><span class="cap">Define o que será feito</span></div>
+          <div class="steps">
+            <div class="box"><span class="code">2.1</span><span class="h1">Mapa de anúncios</span><span class="cap">Levantamento dos anúncios indevidos</span></div>
+            <div class="harrow"></div>
+            <div class="box"><span class="code">2.2</span><span class="h1">Estrutura das páginas</span><span class="cap">Categorias, vitrines, textos e catálogo inicial</span></div>
+            <div class="harrow"></div>
+            <div class="box gate"><span class="code">Marco</span><span class="h1">Plano aprovado</span><span class="cap">Escopo, cronograma e riscos</span></div>
+          </div>
+        </div>
+        <div class="vlink split2"><span></span><span><i></i><i></i></span></div>
+
+        <div class="phase">
+          <div class="phase-id"><span class="label">Fase 3 · Semanas 2 e 3</span><span class="h1">Execução</span><span class="cap">Duas frentes em paralelo</span></div>
+          <div class="fronts">
+            <div class="front">
+              <span class="label">Frente A · Página oficial Solrac</span>
+              <div class="chain">
+                <div class="box"><span class="code">A.1</span><span class="h1">Conta empresa da Solrac</span><span class="cap">Criação ou ajuste da conta com o CNPJ atual</span></div>
+                <div class="down"></div>
+                <div class="box ext"><span class="code">A.2 · Mercado Livre</span><span class="h1">Registro de Marca</span><span class="cap">Envio do certificado do INPI pelo menu Minhas Marcas</span></div>
+                <div class="down"></div>
+                <div class="box ext"><span class="code">A.3 · Mercado Livre</span><span class="h1">Brand Protection Program</span><span class="cap">Inscrição da Solrac como titular da marca</span></div>
+                <div class="down"></div>
+                <div class="box"><span class="code">A.4</span><span class="h1">Produto obrigatório</span><span class="cap">Item mínimo exigido para abrir a Minha Página, no formato definido na imersão</span></div>
+                <div class="down"></div>
+                <div class="box"><span class="code">A.5</span><span class="h1">Minha Página e convite</span><span class="cap">Logo, capa, apresentação e convite à revendedora</span></div>
+              </div>
+            </div>
+            <div class="front">
+              <span class="label">Frente B · Marca revendedora</span>
+              <div class="chain">
+                <div class="box"><span class="code">B.1</span><span class="h1">Conta empresa da revendedora</span><span class="cap">Cadastro com o novo CNPJ e dados fiscais</span></div>
+                <div class="down"></div>
+                <div class="box"><span class="code">B.2</span><span class="h1">Operação</span><span class="cap">Mercado Pago, Mercado Envios, frete e faturamento</span></div>
+                <div class="down"></div>
+                <div class="box"><span class="code">B.3</span><span class="h1">Catálogo inicial</span><span class="cap">Anúncios das linhas prioritárias, com fotos e fichas técnicas</span></div>
+                <div class="down"></div>
+                <div class="box"><span class="code">B.4</span><span class="h1">Aceite do convite</span><span class="cap">Catálogo da revendedora exibido na Loja Oficial Solrac</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vlink split2"><span></span><span><i></i><i></i></span></div>
+
+        <div class="phase">
+          <div class="phase-id"><span class="label">Fase 4 · Semana 4</span><span class="h1">Monitoramento e controle</span><span class="cap">Confere o que foi entregue</span></div>
+          <div class="steps">
+            <div class="box ext"><span class="code">4.1 · Mercado Livre</span><span class="h1">Aprovações do ML</span><span class="cap">Acompanhamento das análises de marca e Loja Oficial</span></div>
+            <div class="harrow"></div>
+            <div class="box"><span class="code">4.2</span><span class="h1">Primeiras denúncias</span><span class="cap">Protocolo dos anúncios mapeados na fase 2</span></div>
+            <div class="harrow"></div>
+            <div class="box"><span class="code">4.3</span><span class="h1">Revisão das páginas</span><span class="cap">Até 2 rodadas de ajustes com a Solrac</span></div>
+          </div>
+        </div>
+        <div class="vlink"><span></span><span></span></div>
+
+        <div class="phase">
+          <div class="phase-id"><span class="label">Fase 5 · Semana 4</span><span class="h1">Encerramento</span><span class="cap">Entrega e aceite</span></div>
+          <div class="steps">
+            <div class="box"><span class="code">5.1</span><span class="h1">Loja Oficial no ar</span><span class="cap">Solrac publicada, com a revendedora convidada</span></div>
+            <div class="harrow"></div>
+            <div class="box"><span class="code">5.2</span><span class="h1">Manual de operação</span><span class="cap">Como denunciar e manter as páginas</span></div>
+            <div class="harrow"></div>
+            <div class="box gate"><span class="code">Marco</span><span class="h1">Aceite final</span><span class="cap">Entrega de acessos e encerramento</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="legend rv">
+      <span><i></i>Etapa conduzida pelo projeto</span>
+      <span><i class="e"></i>Depende de análise do Mercado Livre</span>
+      <span><i class="g"></i>Marco de aprovação da Solrac</span>
+    </div>
+
+    <div class="note rv">
+      <span class="label">Rodada de revisões</span>
+      <p class="bd muted">Cada entrega contempla até 2 (duas) rodadas de ajustes incluídas. Alterações após a aprovação formal ou mudanças de escopo são orçadas à parte, mediante aditivo. A gestão contínua das contas depois da entrega pode ser contratada como extensão do projeto.</p>
+    </div>
+  </section>
+
+  <!-- 06 CRONOGRAMA -->
+  <section id="cronograma" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Quatro semanas, em cinco fases.</h2>
+        <p class="rv">Os prazos consideram retorno da Solrac em até 1 dia útil a cada ponto de aprovação e já descontam os feriados de 2 e 20 de novembro. As análises do Mercado Livre têm prazo próprio e podem deslocar o cronograma, sem alteração de valores.</p>
+      </div>
+    </div>
+    <div class="table-wrap rv">
+      <table class="table">
+        <thead><tr><th>Período</th><th>Fase</th><th>Entregas</th></tr></thead>
+        <tbody>
+          <tr><td>26 — 27 / out</td><td>01 — Iniciação</td><td>Reunião de imersão, coleta de documentos (certificado do INPI, CNPJs, logos), liberação dos acessos às contas e Termo de Abertura aprovado.</td></tr>
+          <tr><td>28 — 30 / out</td><td>02 — Planejamento</td><td>Mapa dos anúncios indevidos, estrutura das duas páginas, catálogo inicial definido, cronograma e plano de riscos aprovados.</td></tr>
+          <tr><td>03 — 13 / nov</td><td>03 — Execução</td><td>Frente A: conta Solrac, Registro de Marca, Brand Protection, produto obrigatório, Minha Página e convite. Frente B: conta da revendedora, operação, catálogo inicial e aceite do convite.</td></tr>
+          <tr><td>16 — 17 / nov</td><td>04 — Monitoramento</td><td>Acompanhamento das aprovações do Mercado Livre, primeiras denúncias e revisão das páginas com a Solrac.</td></tr>
+          <tr class="ms"><td>18 — 19 / nov</td><td>05 — Encerramento</td><td>Páginas no ar, manual de operação, entrega de acessos e aceite final.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 07 PREMISSAS E RISCOS -->
+  <section id="riscos" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">O que precisa ser verdade para dar certo.</h2>
+        <p class="rv">Premissas, restrições e riscos levantados já na abertura, como prevê o Termo de Abertura do Projeto.</p>
+      </div>
+    </div>
+    <div class="grid g2 rv">
+      <div class="cell">
+        <span class="label">Premissas</span>
+        <ul class="list">
+          <li><b>Acesso às contas.</b> A Solrac e a revendedora liberam acesso de administrador às duas contas do Mercado Livre até o fim da semana 1. As contas continuam em nome de cada empresa.</li>
+          <li><b>Registro INPI.</b> O certificado da marca Solrac é de registro concedido e vigente. O Mercado Livre não aceita protocolo de pedido.</li>
+          <li><b>Novo CNPJ.</b> A empresa da revendedora estará aberta e com inscrição estadual ativa até o fim da semana 1.</li>
+          <li><b>Identidade da revendedora.</b> Nome e logo da nova marca são fornecidos pela Solrac. O projeto não envolve criação de marca.</li>
+          <li><b>Materiais.</b> A Solrac fornece fotos, fichas técnicas, medidas e preços dos produtos do catálogo inicial.</li>
+          <li><b>Aprovações.</b> Retorno da Solrac em até 1 dia útil em cada marco.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <span class="label">Restrições</span>
+        <ul class="list">
+          <li><b>Sem venda direta.</b> A conta da Solrac não vende ao consumidor, pela cláusula com os revendedores oficiais. A venda acontece pela revendedora convidada.</li>
+          <li><b>Escopo.</b> O projeto termina com as páginas no ar. Gestão contínua é extensão à parte.</li>
+          <li><b>Canal.</b> Apenas Mercado Livre. Shopee e outros marketplaces ficam fora deste projeto.</li>
+          <li><b>Regras da plataforma.</b> As aprovações de marca, Loja Oficial e Brand Protection são decisões do Mercado Livre.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:var(--s7)" class="rv">
+      <span class="label" style="color:var(--steel);display:block;margin-bottom:var(--s4)">Principais riscos</span>
+      <div class="risk">
+        <div><p class="h1">Produto obrigatório na conta da Solrac</p><p class="bd">Para abrir a Minha Página, o Mercado Livre exige ao menos um produto novo publicado na conta, e a Solrac não vende diretamente.</p></div>
+        <p class="resp">Na imersão, confirmar com o Mercado Livre se o catálogo da revendedora convidada atende ao requisito. Se não atender, publicar um único item no preço dos revendedores, sem anúncio pago, em acordo com a rede.</p>
+      </div>
+      <div class="risk">
+        <div><p class="h1">Prazo de análise do Mercado Livre</p><p class="bd">As análises de marca e Loja Oficial seguem a fila da plataforma, sem prazo informado, e podem passar da semana 4.</p></div>
+        <p class="resp">Enviar os pedidos no primeiro dia da semana 2 e manter a Frente B andando em paralelo.</p>
+      </div>
+      <div class="risk">
+        <div><p class="h1">Contas ligadas aos mesmos sócios</p><p class="bd">Duas contas com sócios em comum podem passar por verificação adicional da plataforma.</p></div>
+        <p class="resp">Cadastrar cada conta com CNPJ, e-mail, telefone e dados bancários próprios.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 INVESTIMENTO -->
+  <section id="investimento" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Projeto fechado, do início à entrega.</h2>
+        <p class="rv">Escopo integral das duas frentes, em valor fechado, com as duas páginas no ar ao final.</p>
+      </div>
+    </div>
+    <div class="grid g2 rv">
+      <div class="cell plan">
+        <span class="tag">Plano único</span>
+        <h3 class="t2">Projeto Solrac no Mercado Livre</h3>
+        <p class="sm">Tudo o que está incluído no escopo contratado.</p>
+        <div class="inc">Imersão, Termo de Abertura e plano do projeto</div>
+        <div class="inc">Mapa dos anúncios que usam a marca Solrac indevidamente</div>
+        <div class="inc">Conta da Solrac, Registro de Marca no Mercado Livre e inscrição no Brand Protection Program</div>
+        <div class="inc">Página oficial da Solrac (Minha Página / Loja Oficial)</div>
+        <div class="inc">Conta da marca revendedora, configuração de pagamento e envio</div>
+        <div class="inc">Catálogo da revendedora sem limite de anúncios, vinculado à Loja Oficial Solrac</div>
+        <div class="inc">Protocolo das primeiras denúncias</div>
+        <div class="inc">Manual de operação e entrega de todos os acessos</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-block">
+          <span class="label">Projeto — valor fechado</span>
+          <div class="price">R$ 7.500</div>
+          <p class="cap">Em 2 parcelas: R$ 3.750 na assinatura do contrato e R$ 3.750 na entrega, com a Loja Oficial no ar.</p>
+        </div>
+        <div class="price-block">
+          <span class="label">Condições comerciais</span>
+          <p class="cap">Valor fechado para todo o escopo, sem limite de anúncios no catálogo da revendedora. Sem reajuste durante o projeto. Proposta válida por 15 dias.</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid g2 rv" style="margin-top:var(--s5)">
+      <div class="cell extra">
+        <span class="tag">Extensão</span>
+        <h3 class="t2">Gestão contínua</h3>
+        <p class="bd muted">Monitoramento de novos anúncios indevidos, denúncias recorrentes e gestão da conta revendedora depois da entrega. Contratada à parte, mediante aditivo.</p>
+      </div>
+      <div class="cell extra">
+        <span class="tag">Não incluso</span>
+        <h3 class="t2">Custos da plataforma e terceiros</h3>
+        <p class="bd muted">Mensalidade da Minha Página e tarifas de venda do Mercado Livre, taxas do INPI, abertura do novo CNPJ, produção de fotos e frete. Pagos pela Solrac ou pela revendedora diretamente a cada fornecedor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 CONTRATO -->
+  <section id="contrato" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">09</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">O que o contrato vai prever.</h2>
+        <p class="rv">Resumo dos pontos que estruturam o instrumento definitivo, a ser assinado digitalmente.</p>
+      </div>
+    </div>
+    <div class="clauses rv">
+      <div class="clause"><span class="num">01</span><h3 class="h1">Objeto e escopo</h3><p class="bd">Estruturação da página oficial da Solrac e da conta da marca revendedora no Mercado Livre, conforme escopo desta proposta, que integra o contrato como anexo.</p></div>
+      <div class="clause"><span class="num">02</span><h3 class="h1">Prazo</h3><p class="bd">Início em 26/10/2026 e entrega prevista em 19/11/2026. O prazo se estende automaticamente pelo tempo de análise do Mercado Livre que exceder o previsto.</p></div>
+      <div class="clause"><span class="num">03</span><h3 class="h1">Obrigação de meio</h3><p class="bd">As aprovações de Registro de Marca, Loja Oficial e Brand Protection, e a remoção de anúncios denunciados, são decisões do Mercado Livre. A contratada garante a execução correta dos pedidos, não o resultado da análise.</p></div>
+      <div class="clause"><span class="num">04</span><h3 class="h1">Titularidade das contas</h3><p class="bd">As duas contas pertencem às empresas titulares. Para executar o projeto, a contratada recebe acesso de administrador a cada conta, liberado pela Solrac e pela revendedora. Ao término, o acesso é encerrado e as senhas podem ser trocadas pelas titulares, sem trava técnica.</p></div>
+      <div class="clause"><span class="num">05</span><h3 class="h1">Proteção de dados</h3><p class="bd">A Solrac como controladora e a contratada como operadora, tratando dados apenas conforme instruções, nos termos da LGPD.</p></div>
+      <div class="clause"><span class="num">06</span><h3 class="h1">Confidencialidade</h3><p class="bd">Sigilo recíproco sobre informações comerciais, revendedores, custos e margens, durante o contrato e por 3 anos após. Uso do projeto como case em portfólio autorizado, com omissão de dados sensíveis a critério da Solrac.</p></div>
+      <div class="clause"><span class="num">07</span><h3 class="h1">Rescisão</h3><p class="bd">Imotivada, com aviso prévio de 15 dias e pagamento das etapas concluídas e proporcional das etapas em curso.</p></div>
+      <div class="clause"><span class="num">08</span><h3 class="h1">Assinatura e foro</h3><p class="bd">Assinatura eletrônica, com validade nos termos da MP 2.200-2/2001 e da Lei 14.063/2020. Foro da Comarca de São Paulo/SP.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 PRÓXIMOS PASSOS -->
+  <section id="passos" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">10</div>
+      <div class="sec-title">
+        <h2 class="t1 rv">Aprovando a proposta, começamos assim.</h2>
+      </div>
+    </div>
+    <div class="grid g4 rv">
+      <div class="cell step"><div class="label">01</div><p class="bd">Aprovação da proposta e envio dos dados para o contrato</p></div>
+      <div class="cell step"><div class="label">02</div><p class="bd">Assinatura do contrato e pagamento da primeira parcela</p></div>
+      <div class="cell step"><div class="label">03</div><p class="bd">Envio do certificado do INPI, dos dados das duas empresas e dos acessos às contas</p></div>
+      <div class="cell step"><div class="label">04</div><p class="bd">Reunião de imersão na segunda-feira, 26 de outubro de 2026</p></div>
+    </div>
+  </section>
+
+  <!-- 11 ENCERRAMENTO -->
+  <section class="closing" id="contato" data-sec>
+    <div class="sec-head">
+      <div class="sec-num">11</div>
+      <div class="sec-title"><span class="label" style="color:var(--ash)">Encerramento</span></div>
+    </div>
+    <h2 class="d2">Pronto para colocar a Solrac no Mercado Livre.</h2>
+    <p class="bl">Qualquer ponto de escopo, prazo ou condição comercial pode ser ajustado antes da assinatura. Estou à disposição para uma conversa de alinhamento.</p>
+    <div class="contacts">
+      <div><div class="label">Responsável</div><p>Lucas Dato</p></div>
+      <div><div class="label">E-mail</div><p>lucasprojetokaos@gmail.com</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="cap">Lucas Dato · Proposta Solrac · Outubro 2026</div>
+    <div class="cap">Documento confidencial</div>
+  </footer>
+
+</main>
+</div>
+
+<div class="hud" aria-hidden="true">
+  <div class="keys"><kbd>↑</kbd><kbd>↓</kbd></div>
+  <div class="counter" id="counter">00 / 11</div>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-sec]'));
+  var counter = document.getElementById('counter');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function topOf(el){ return el.getBoundingClientRect().top + window.scrollY; }
+  function current(){
+    var y = window.scrollY + window.innerHeight * 0.3, i = 0;
+    secs.forEach(function(s,k){ if (topOf(s) <= y) i = k; });
+    return i;
+  }
+  function go(i){
+    i = Math.max(0, Math.min(secs.length - 1, i));
+    window.scrollTo({ top: topOf(secs[i]), behavior: reduce ? 'auto' : 'smooth' });
+  }
+  window.addEventListener('keydown', function(e){
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var i = current();
+    if (['ArrowDown','ArrowRight','PageDown'].indexOf(e.key) > -1){ e.preventDefault(); go(i+1); }
+    else if (['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key) > -1){ e.preventDefault(); go(i-1); }
+    else if (e.key === 'Home'){ e.preventDefault(); go(0); }
+    else if (e.key === 'End'){ e.preventDefault(); go(secs.length-1); }
+  });
+  function paint(){ counter.textContent = pad(current()) + ' / ' + pad(secs.length - 1); }
+  window.addEventListener('scroll', function(){ requestAnimationFrame(paint); }, { passive:true });
+  window.addEventListener('resize', paint);
+  paint();
+})();
+</script>
+
+</body>
+</html>
